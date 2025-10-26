@@ -1,9 +1,6 @@
 ## PyLiteDB
 
-**PyLiteDB** is a small, lightweight database engine written in Python.
-It works like SQLite but stores data in JSON format.
-You can store, update, get, and delete records in tables.
-It also supports optional encryption to keep your data safe.
+**PyLiteDB** is a small, lightweight database engine written in Python. It stores data as JSON-like records. You can store, update, get, and delete records in tables. It also supports optional encryption to keep your data safe.
 
 ## Features:
 
