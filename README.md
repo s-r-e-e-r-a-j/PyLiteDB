@@ -77,3 +77,6 @@ test.meta.json  # stores table metadata
 - Always use the Database API; do not edit `.db` or `.meta.json` manually.
 
 - Encryption works only if you provide a passphrase.
+
+## License
+This project is licensed under the MIT License
