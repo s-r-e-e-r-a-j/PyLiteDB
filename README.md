@@ -17,7 +17,7 @@
 - Metadata stored in `.meta.json` files
 
 ## Installation / Setup:
-
+**Ensure that Python 3.9 or newer is installed on your system.**
 1. **Go to your project folder:**
 ```bash
 cd /path/to/your/project
