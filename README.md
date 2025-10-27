@@ -10,11 +10,18 @@
 
 - Get all records from a table
 
+- Filter records using a key and value
+
 - Optional AES-GCM encryption with SHA3-based keys
+  
+- A salt file (`.salt`) is used to help with encryption and decryption
+  
 
 - Write-Ahead Logging (WAL) for crash-safe operations
 
 - Metadata stored in `.meta.json` files
+  
+- Includes an easy-to-use CLI mode for managing databases
 
 ## Installation / Setup:
 **Ensure that Python 3.9 or newer is installed on your system.**
