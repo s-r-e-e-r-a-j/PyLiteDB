@@ -48,14 +48,10 @@ def main(argv: list[str] | None = None) -> int:
                 print("Deleted successfully" if ok else "Delete failed")
 
             elif cmd == "FILTER":
-                name, key, value = p.parse_filter(line)
-                results = [r for r in db.find_all(name) if str(r.get(key)) == value]
-                if not results:
-                    print("No matching records found")
-                else:
-                    for r in results:
-                        print(r)
-
+                 name, key, value = p.parse_filter(line)
+                 results = db.find_by_filter(name, key, value)
+                for r in results:
+                    print(r)
             else:
                 print("Unknown command. Supported: CREATE, INSERT, SELECT, UPDATE, DELETE, FILTER, EXIT")
 
