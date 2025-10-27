@@ -85,6 +85,17 @@ class Database:
             out.append(self.get(table, rid))
         return out
 
+    def find_by_filter(self, table: str, key: str, value: Any) -> List[Dict[str, Any]]:
+        t = self.tables.get(table)
+        if not t:
+            return []
+        result: List[Dict[str, Any]] = []
+        for rid in t.all_keys():
+            row = self.get(table, rid)
+            if row and key in row and row[key] == value:
+                result.append(row)
+        return result
+
     def _apply(self, record: Dict[str, Any]) -> bool:
         op = record.get("op")
         table = record.get("table")
