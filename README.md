@@ -85,7 +85,7 @@ Once started, you’ll see the prompt:
 pylite>
 ```
 
-### 🧩 Supported CLI Commands
+### Supported CLI Commands
 
 | Command                             |Description                                               | 
 |-------------------------------------|----------------------------------------------------------|
@@ -94,6 +94,16 @@ pylite>
 | `SELECT * FROM <table>`             | Display all records from the specified table.            | 
 | `EXIT` or `QUIT`                    | Exit the PyLiteDB interactive shell.                     |
 
+### Example Session 
+```bash
+pylite> CREATE TABLE users
+created users
+pylite> INSERT INTO users VALUES {"name":"Sreeraj","age":21}
+97d670293f2b47739cbc515ce6f27d84
+pylite> SELECT * FROM users
+{'name': 'Sreeraj', 'age': 21}
+pylite>
+```
 ## Notes:
 
 - Always use the Database API; do not edit `.db` or `.meta.json` manually.
