@@ -132,7 +132,7 @@ pylite> EXIT
 ```
 ## Notes:
 
-- Always use the Database API; do not edit `.db` or `.meta.json` manually.
+- Always use the Database API; do not edit `.db`, `.meta.json` or `.salt` manually.
 
 - Encryption works only if you provide a passphrase.
 
