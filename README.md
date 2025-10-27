@@ -87,12 +87,15 @@ pylite>
 
 ### Supported CLI Commands
 
-| Command                             |Description                                               | 
-|-------------------------------------|----------------------------------------------------------|
-| `CREATE TABLE <name>`.              | Create a new table in the database.                      |
-| `INSERT INTO <table> VALUES <json>` | Insert a JSON-formatted record into the specified table. |
-| `SELECT * FROM <table>`             | Display all records from the specified table.            | 
-| `EXIT` or `QUIT`                    | Exit the PyLiteDB interactive shell.                     |
+| Command                                   | Description                                                          |
+|-------------------------------------------|----------------------------------------------------------------------|
+| `CREATE TABLE <name>`                     | Create a new table in the database.                                  |
+| `INSERT INTO <table> VALUES <json>`       | Insert a JSON-formatted record into the specified table.             |
+| `SELECT * FROM <table>`                   | Display all records from the specified table.                        |
+| `UPDATE <table> <row_id> <json>`          | Update the record with the given row ID in the specified table.      |
+| `DELETE <table> <row_id>`                 | Delete the record with the given row ID from the specified table.    |
+| `FILTER <table> <key>=<value>`            | Display records where the given key matches the specified value.     |
+| `EXIT` or `QUIT`                          | Exit the PyLiteDB interactive shell.                                 |
 
 ### Example Session 
 ```bash
