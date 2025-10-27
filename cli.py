@@ -20,20 +20,42 @@ def main(argv: list[str] | None = None) -> int:
             if line.lower() in {"quit", "exit"}:
                 break
             cmd = line.strip().split()[0].upper()
+
             if cmd == "CREATE":
                 name, _ = p.parse_create(line)
                 db.create_table(name)
-                print(f"created {name}")
+                print(f"Created table '{name}'")
+
             elif cmd == "INSERT":
                 name, payload = p.parse_insert(line)
                 rid = db.insert(name, payload)
-                print(rid)
+                print(f"Inserted row ID: {rid}")
+
             elif cmd == "SELECT":
                 name, _ = p.parse_select(line)
-                for r in db.find_all(name):
+                rows = db.find_all(name)
+                for r in rows:
                     print(r)
+
+            elif cmd == "UPDATE":
+                name, rid, payload = p.parse_update(line)
+                ok = db.update(name, rid, payload)
+                print("Updated successfully" if ok else "Update failed")
+
+            elif cmd == "DELETE":
+                name, rid = p.parse_delete(line)
+                ok = db.delete(name, rid)
+                print("Deleted successfully" if ok else "Delete failed")
+
+            elif cmd == "FILTER":
+                name, key, value = p.parse_filter(line)
+                results = [r for r in db.find_all(name) if str(r.get(key)) == value]
+                for r in results:
+                    print(r)
+
             else:
-                print("unknown")
+                print("Unknown command. Supported: CREATE, INSERT, SELECT, UPDATE, DELETE, FILTER, EXIT")
+
     except (EOFError, KeyboardInterrupt):
         return 0
     return 0
