@@ -70,6 +70,28 @@ test.meta.json  # stores table metadata
 .wal            # write-ahead log for crash recovery
 ```
 
+You can start the interactive PyLiteDB shell using:
+```bash
+python3 -m PyLiteDB.cli
+```
+or (if you have a specific database file and passphrase):
+```bash
+python3 -m PyLiteDB.cli mydatabase.db mysecret
+```
+Once started, you’ll see the prompt:
+```bash
+pylite>
+```
+
+### 🧩 Supported CLI Commands
+
+| Command                             |Description                                               | 
+|-------------------------------------|----------------------------------------------------------|
+| `CREATE TABLE <name>`.              | Create a new table in the database.                      |
+| `INSERT INTO <table> VALUES <json>` | Insert a JSON-formatted record into the specified table. |
+| `SELECT * FROM <table>`             | Display all records from the specified table.            | 
+| `EXIT` or `QUIT`                    | Exit the PyLiteDB interactive shell.                     |
+
 ## Notes:
 
 - Always use the Database API; do not edit `.db` or `.meta.json` manually.
