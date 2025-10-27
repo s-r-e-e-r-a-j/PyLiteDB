@@ -70,6 +70,8 @@ test.meta.json  # stores table metadata
 .wal            # write-ahead log for crash recovery
 ```
 
+## Usage(CLI Mode) 
+
 You can start the interactive PyLiteDB shell using:
 ```bash
 python3 -m PyLiteDB.cli
