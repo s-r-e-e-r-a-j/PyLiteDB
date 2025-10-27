@@ -50,8 +50,11 @@ def main(argv: list[str] | None = None) -> int:
             elif cmd == "FILTER":
                 name, key, value = p.parse_filter(line)
                 results = [r for r in db.find_all(name) if str(r.get(key)) == value]
-                for r in results:
-                    print(r)
+                if not results:
+                    print("No matching records found")
+                else:
+                    for r in results:
+                        print(r)
 
             else:
                 print("Unknown command. Supported: CREATE, INSERT, SELECT, UPDATE, DELETE, FILTER, EXIT")
