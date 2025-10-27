@@ -65,9 +65,10 @@ db.commit()
 
 ## File Structure:
 ```bash
-test.db         # stores the data
-test.meta.json  # stores table metadata
-.wal            # write-ahead log for crash recovery
+test.db           # Stores the main database data
+test.meta.json    # Stores table metadata
+test.db.wal       # Write-Ahead Log for crash recovery
+test.salt         # Stores the cryptographic salt used for encryption
 ```
 
 ## Usage(CLI Mode) 
