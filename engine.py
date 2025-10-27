@@ -2,7 +2,7 @@
 # GitHub: https://github.com/s-r-e-e-r-a-j
 
 from __future__ import annotations
-import json, uuid
+import json, uuid, os
 from typing import Any, Dict, List, Optional
 from .storage import StorageEngine
 from .btree import BTree
@@ -12,7 +12,9 @@ from .crypto import Crypto
 class Database:
     def __init__(self, path: str, passphrase: str | None = None) -> None:
         self.path = path
-        self.crypto = Crypto(passphrase) if passphrase else None
+        self.passphrase = passphrase or ""
+        salt_file = f"{os.path.splitext(path)[0]}.salt"
+        self.crypto = Crypto(self.passphrase, salt_file=salt_file) if passphrase else None
         self.store = StorageEngine(path, self.crypto)
         self.wal = WAL(path + ".wal")
         self.tables: Dict[str, BTree] = {}
@@ -20,6 +22,8 @@ class Database:
         self._replay_wal()
 
     def _load_tables(self) -> None:
+        if not self.store.meta_path.exists():
+            self.store.meta_path.write_text(json.dumps({"tables": {}}), encoding="utf-8")
         cfg = json.loads(self.store.meta_path.read_text(encoding="utf-8"))
         for name, info in cfg.get("tables", {}).items():
             b = BTree()
@@ -106,7 +110,6 @@ class Database:
                 self.store.write_table_meta(table, {"rows": rows})
             return ok
         if op == "update":
-            # Update is already applied directly; just ensure WAL consistency
             return True
         return False
 
