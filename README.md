@@ -77,10 +77,19 @@ You can start the interactive PyLiteDB shell using:
 ```bash
 python3 -m PyLiteDB.cli
 ```
-or (if you have a specific database file and passphrase):
+This command will open the PyLiteDB shell with a new or existing database named `pylitedb.db` (unencrypted by default).
+
+If you want to use a specific database file **with encryption enabled**, provide a passphrase:
 ```bash
 python3 -m PyLiteDB.cli mydatabase.db mysecret
 ```
+
+If the database file (`mydatabase.db`) does not exist, it will be created automatically.
+
+If the file already exists, the same passphrase used during creation must be provided to access it.
+
+If no passphrase is provided, the database will operate in **unencrypted mode**.
+
 Once started, you’ll see the prompt:
 ```bash
 pylite>
