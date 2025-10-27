@@ -45,9 +45,10 @@ db.create_table("users")
 # Insert records
 uid1 = db.insert("users", {"name": "Sreeraj", "age": 21})
 uid2 = db.insert("users", {"name": "Sreereshmi", "age": 17})
+uid3 = db.insert("users", {"name": "Alex", "age": 25})
 
-# Fetch a record
-print(db.get("users", uid1))
+# Fetch a record by ID
+print("Single record:", db.get("users", uid1))
 
 # Update a record (change name or other fields)
 db.update("users", uid1, {"name": "Sreekuttan", "role": "developer"})
@@ -56,7 +57,10 @@ db.update("users", uid1, {"name": "Sreekuttan", "role": "developer"})
 db.delete("users", uid2)
 
 # Fetch all records
-print(db.find_all("users"))
+print("All records:", db.find_all("users"))
+
+# 🔍 Filter records by key/value
+print("Filtered (name='Alex'):", db.find_by_filter("users", "name", "Alex"))
 
 # Commit changes
 db.commit()
