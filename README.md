@@ -130,6 +130,25 @@ Deleted successfully
 pylite> SELECT * FROM users
 pylite> EXIT
 ```
+
+### Using the CLI Programmatically (Inside a Python Script)
+
+You can also run the PyLiteDB CLI directly from a Python file by importing it:
+```python
+from PyLiteDB.cli import main
+
+# Example 1: Run with the default database (unencrypted)
+main([])
+
+# Example 2: Run with a specific database file (unencrypted)
+main(["mydatabase.db"])
+
+# Example 3: Run with encryption using a passphrase
+main(["mydatabase.db", "mysecret"])
+```
+
+This is useful when you want to embed the interactive PyLiteDB shell inside another Python-based project or provide a scripted interface for database management.
+
 ## Notes:
 
 - Always use the Database API; do not edit `.db`, `.meta.json` or `.salt` manually.
