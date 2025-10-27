@@ -100,12 +100,25 @@ pylite>
 ### Example Session 
 ```bash
 pylite> CREATE TABLE users
-created users
-pylite> INSERT INTO users VALUES {"name":"Sreeraj","age":21}
-97d670293f2b47739cbc515ce6f27d84
+Created table 'users'
+pylite> INSERT INTO users VALUES{"name":"sreeraj","age":21}
+Inserted row ID: c75ad045fbd449be9591ddab93fe204a
 pylite> SELECT * FROM users
-{'name': 'Sreeraj', 'age': 21}
-pylite>
+{'name': 'sreeraj', 'age': 21}
+pylite> UPDATE users c75ad045fbd449be9591ddab93fe204a {"name":"sreereshmi","age":17}
+Updated successfully
+pylite> SELECT * FROM users
+{'name': 'sreereshmi', 'age': 17}
+pylite> UPDATE users c75ad045fbd449be9591ddab93fe204a {"name":"sreeraj","age":21,"role":"developer"}
+Updated successfully
+pylite> SELECT * FROM users
+{'name': 'sreeraj', 'age': 21, 'role': 'developer'}
+pylite> FILTER users name=sreeraj
+{'name': 'sreeraj', 'age': 21, 'role': 'developer'}
+pylite> DELETE users c75ad045fbd449be9591ddab93fe204a
+Deleted successfully
+pylite> SELECT * FROM users
+pylite> EXIT
 ```
 ## Notes:
 
