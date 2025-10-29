@@ -94,7 +94,7 @@ if filtered:
     print("Filtered name:", filtered[0]["name"])
     print("Filtered age:", filtered[0]["age"])
 
-# Commit changes to database
+# Commit changes
 db.commit()
 
 ```
