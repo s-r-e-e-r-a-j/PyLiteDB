@@ -43,8 +43,8 @@ pip3 install cryptography
 ```python
 from PyLiteDB import Database
 
-# Create/open database with optional passphrase
-db = Database("test.db", "mypassword")  # passphrase optional
+# Create or open database with optional passphrase
+db = Database("test.db", "mypassword")
 
 # Create a table
 db.create_table("users")
@@ -55,21 +55,46 @@ uid2 = db.insert("users", {"name": "Sreereshmi", "age": 17})
 uid3 = db.insert("users", {"name": "Alex", "age": 25})
 
 # Fetch a record by ID
-print("Single record:", db.get("users", uid1))
+record = db.get("users", uid1)
+print("Single record:", record)
 
-# Update a record (change name or other fields)
-db.update("users", uid1, {"name": "Sreekuttan", "role": "developer"})
+# Access single pieces of data from the record
+print("Name:", record["name"])
+print("Age:", record["age"])
+
+# Update a record
+# You can change existing fields or add new ones
+db.update("users", uid1, {
+    "name": "Sreekuttan",
+    "role": "developer",
+    "email": "sreekuttan@example.com"
+})
+
+# Fetch the updated record to confirm changes
+updated_record = db.get("users", uid1)
+print("\nUpdated record:", updated_record)
 
 # Delete a record
 db.delete("users", uid2)
 
 # Fetch all records
-print("All records:", db.find_all("users"))
+all_records = db.find_all("users")
+print("\nAll records:", all_records)
 
-# 🔍 Filter records by key/value
-print("Filtered (name='Alex'):", db.find_by_filter("users", "name", "Alex"))
+# Filter records by key/value
+filtered = db.find_by_filter("users", "name", "Alex")
+print("\nFiltered (name='Alex'):", filtered)
 
-# Commit changes
+# Accessing filtered data
+if filtered:
+    # Print entire row of filtered data
+    print("\nFiltered row:", filtered)
+    
+    # Print single pieces of data from filtered
+    print("Filtered name:", filtered[0]["name"])
+    print("Filtered age:", filtered[0]["age"])
+
+# Commit changes to database
 db.commit()
 
 ```
