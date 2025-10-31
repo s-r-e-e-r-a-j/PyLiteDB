@@ -24,7 +24,7 @@
 - Includes an easy-to-use CLI mode for managing databases
 
 ## Installation / Setup:
-**Ensure that Python 3.9 or newer is installed on your system.**
+**Ensure that Python 3.10 or newer is installed on your system.**
 
 1. **Go to your project folder:**
 ```bash
