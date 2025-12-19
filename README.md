@@ -182,7 +182,7 @@ This is useful when you want to embed the interactive PyLiteDB shell inside anot
 
 ## Notes:
 
-- Always use the Database API; do not edit `.db`, `.meta.json` or `.salt` manually.
+- Always use the Database API, do not edit `.db`, `.meta.json` or `.salt` manually.
 
 - Encryption works only if you provide a passphrase.
 
