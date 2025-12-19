@@ -28,9 +28,9 @@
 
 **You can install PyLiteDB using pip or pip3:**
 ```bash
-pip3 install pylitedb
+pip3 install pylitedb-engine
 # or
-pip install pylitedb
+pip install pylitedb-engine
 ```
 
 ## Usage Example
