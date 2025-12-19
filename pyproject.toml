@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pylitedb"
+version = "1.0.0"
+description = "A lightweight Python database engine that stores JSON-like records with optional encryption support."
+readme = "README.md"
+license = { file = "LICENSE.md" }
+authors = [
+  { name = "Sreeraj S Kurup" }
+]
+requires-python = ">=3.10"
+
+dependencies = [
+  "cryptography>=41.0.0"
+]
+
+keywords = [
+  "database",
+  "database-engine",
+  "json",
+  "json-database",
+  "lightweight-database",
+  "python-database",
+  "encryption",
+  "encrypted-database",
+  "cli",
+  "storage"
+]
+
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Operating System :: OS Independent",
+  "License :: OSI Approved :: MIT License",
+]
+
+[project.scripts]
+pylitedb = "PyLiteDB.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["PyLiteDB*"]
