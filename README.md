@@ -23,21 +23,16 @@
   
 - Includes an easy-to-use CLI mode for managing databases
 
-## Installation / Setup:
+## Installation:
 **Ensure that Python 3.10 or newer is installed on your system.**
 
-1. **Go to your project folder:**
+**You can install PyLiteDB using pip or pip3:**
 ```bash
-cd /path/to/your/project
+pip3 install pylitedb
+# or
+pip install pylitedb
 ```
-2. **Clone the PyLiteDB folder inside your project:**
-```bash
-git clone https://github.com/s-r-e-e-r-a-j/PyLiteDB.git
-```
-3. **Install the dependency for encryption:**
-```bash
-pip3 install cryptography
-```
+
 ## Usage Example
 
 ```python
@@ -111,13 +106,13 @@ test.salt         # Stores the cryptographic salt used for encryption
 
 You can start the interactive PyLiteDB shell using:
 ```bash
-python3 -m PyLiteDB.cli
+python3 -m PyLiteDB
 ```
 This command will open the PyLiteDB shell with a new or existing database named `pylitedb.db` (unencrypted by default).
 
 If you want to use a specific database file **with encryption enabled**, provide a passphrase:
 ```bash
-python3 -m PyLiteDB.cli mydatabase.db mysecret
+python3 -m PyLiteDB mydatabase.db mysecret
 ```
 
 If the database file (`mydatabase.db`) does not exist, it will be created automatically.
