@@ -3,7 +3,7 @@
 
 from __future__ import annotations
 import json, uuid, os
-from typing import Any, Dict, List, Optional
+from typing import Any
 from .storage import StorageEngine
 from .btree import BTree
 from .wal import WAL
@@ -40,7 +40,7 @@ class Database:
         self.store.write_table_meta(name, {"rows": {}})
         self.tables[name] = BTree()
 
-    def insert(self, table: str, row: Dict[str, Any]) -> str:
+    def insert(self, table: str, row: dict[str, Any]) -> str:
         rid = uuid.uuid4().hex
         page_no = self.store.write_row(row)
         rec = {"op": "insert", "table": table, "id": rid, "page": page_no}
@@ -48,7 +48,7 @@ class Database:
         self._apply(rec)
         return rid
 
-    def get(self, table: str, rid: str) -> Optional[Dict[str, Any]]:
+    def get(self, table: str, rid: str) -> dict[str, Any] | None:
         t = self.tables.get(table)
         if not t:
             return None
@@ -62,7 +62,7 @@ class Database:
         self.wal.append(rec)
         return self._apply(rec)
 
-    def update(self, table: str, rid: str, new_data: Dict[str, Any]) -> bool:
+    def update(self, table: str, rid: str, new_data: dict[str, Any]) -> bool:
         t = self.tables.get(table)
         if not t:
             return False
@@ -76,27 +76,27 @@ class Database:
         self.wal.append(rec)
         return self._apply(rec)
 
-    def find_all(self, table: str) -> List[Dict[str, Any]]:
+    def find_all(self, table: str) -> list[dict[str, Any]]:
         t = self.tables.get(table)
         if not t:
             return []
-        out: List[Dict[str, Any]] = []
+        out: list[dict[str, Any]] = []
         for rid in t.all_keys():
             out.append(self.get(table, rid))
         return out
 
-    def find_by_filter(self, table: str, key: str, value: Any) -> List[Dict[str, Any]]:
+    def find_by_filter(self, table: str, key: str, value: Any) -> list[dict[str, Any]]:
         t = self.tables.get(table)
         if not t:
             return []
-        result: List[Dict[str, Any]] = []
+        result: list[dict[str, Any]] = []
         for rid in t.all_keys():
             row = self.get(table, rid)
             if row and key in row and row[key] == value:
                 result.append(row)
         return result
 
-    def _apply(self, record: Dict[str, Any]) -> bool:
+    def _apply(self, record: dict[str, Any]) -> bool:
         op = record.get("op")
         table = record.get("table")
         if op == "insert":

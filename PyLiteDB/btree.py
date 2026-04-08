@@ -3,12 +3,12 @@
 
 from __future__ import annotations
 from bisect import bisect_left
-from typing import Any, List
+from typing import Any
 
 class BTree:
     def __init__(self) -> None:
-        self.keys: List[Any] = []
-        self.values: List[Any] = []
+        self.keys: list[Any] = []
+        self.values: list[Any] = []
 
     def insert(self, key: Any, value: Any) -> None:
         i = bisect_left(self.keys, key)
@@ -32,5 +32,5 @@ class BTree:
             return True
         return False
 
-    def all_keys(self) -> List[Any]:
+    def all_keys(self) -> list[Any]:
         return list(self.keys)

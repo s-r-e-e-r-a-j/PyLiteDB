@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pylitedb-engine"
-version = "1.0.0"
+version = "1.0.1"
 description = "A lightweight Python database engine that stores JSON-like records with optional encryption support."
 readme = "README.md"
 license = { file = "LICENSE.md" }
