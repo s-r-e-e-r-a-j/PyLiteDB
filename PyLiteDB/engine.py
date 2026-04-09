@@ -17,7 +17,7 @@ class Database:
         self.crypto = Crypto(self.passphrase, salt_file=salt_file) if passphrase else None
         self.store = StorageEngine(path, self.crypto)
         self.wal = WAL(path + ".wal")
-        self.tables: Dict[str, BTree] = {}
+        self.tables: dict[str, BTree] = {}
         self._load_tables()
         self._replay_wal()
 
